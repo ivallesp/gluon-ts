@@ -60,6 +60,11 @@ class MetricAttentiveScheduler(mx.lr_scheduler.LRScheduler):
     ) -> None:
 
         assert base_lr > 0, f"base_lr should be positive, got {base_lr}"
+        
+        assert (
+            base_lr > min_lr, 
+            f"base_lr should greater than min_lr, {base_lr} <= {min_lr}"
+        )
 
         assert (
             0 < decay_factor < 1
